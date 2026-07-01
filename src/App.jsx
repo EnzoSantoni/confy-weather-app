@@ -5,16 +5,15 @@ import WeatherView from './components/WeatherView'
 import GameView from './components/GameView'
 import CompareView from './components/CompareView'
 import SearchBar from './components/SearchBar'
-
-
-
+import { useWeather } from './hooks/useWeather'
 
 
 
 function App() {
-
-  function onSearch(evt) {
-    console.log(evt)
+  const [city, setCity] = useState('')
+  const {data, loading, error} = useWeather(city)
+  function onSearch(c) {
+    setCity(c)
   }
 
 
