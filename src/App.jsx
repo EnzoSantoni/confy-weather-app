@@ -11,7 +11,7 @@ import { useWeather } from './hooks/useWeather'
 
 function App() {
   const [city, setCity] = useState('')
-  const {data, loading, error} = useWeather(city)
+  const {data, forecast, loading, error} = useWeather(city)
   function onSearch(c) {
     setCity(c)
   }
@@ -22,8 +22,10 @@ function App() {
     <div className="container">
       <SearchBar onSearch={onSearch} />
     <Routes>
-      <Route path="/" element={<WeatherView />}></Route>
+      <Route path="/" element={<WeatherView data={data} forecast={forecast} loading={loading} error={error} />}></Route>
+
       <Route path="/compare" element={<CompareView />}></Route>
+      
       <Route path="/game" element={<GameView />}></Route>
     </Routes>
     </div>
