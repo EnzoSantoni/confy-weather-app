@@ -1,11 +1,12 @@
 import { useState } from "react"
 
-function SearchBar ({onSearch}) {
+function SearchBar ({onSearch, addCity}) {
 const [city, setCity] = useState('');
 
 function handleSubmit(e) {
     e.preventDefault()
     onSearch(city)
+    addCity(city)
     setCity('')
 }
 
