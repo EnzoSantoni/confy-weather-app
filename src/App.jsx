@@ -6,12 +6,15 @@ import GameView from './components/GameView'
 import CompareView from './components/CompareView'
 import SearchBar from './components/SearchBar'
 import { useWeather } from './hooks/useWeather'
+import { useSearchHistory } from './hooks/useSearchHistory'
 
 
 
 function App() {
   const [city, setCity] = useState('')
   const {data, forecast, loading, error} = useWeather(city)
+  const {addCity, history} = useSearchHistory()
+  
   function onSearch(c) {
     setCity(c)
   }
@@ -20,9 +23,9 @@ function App() {
 
   return (
     <div className="container">
-      <SearchBar onSearch={onSearch} />
+      <SearchBar onSearch={onSearch} addCity={addCity}/>
     <Routes>
-      <Route path="/" element={<WeatherView data={data} forecast={forecast} loading={loading} error={error} />}></Route>
+      <Route path="/" element={<WeatherView data={data} forecast={forecast} loading={loading} error={error} history={history} onSearch={onSearch} />}></Route>
 
       <Route path="/compare" element={<CompareView />}></Route>
       
