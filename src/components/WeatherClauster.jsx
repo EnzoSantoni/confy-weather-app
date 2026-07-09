@@ -19,8 +19,8 @@ export default function WeatherClauster({data}) {
                 <div className="weather-info-des">{data.weather[0].description}</div>
             </div>
             <div className="weather-change">
-                <button className="wheather-b-vhanges" onClick={() => setIsCelsius(true)}>°C</button>
-                <button className="wheather-b-vhanges" onClick={() => setIsCelsius(false)}>°F</button>
+                <button className="wheather-b-changes" onClick={() => setIsCelsius(true)}>°C</button>
+                <button className="wheather-b-changes" onClick={() => setIsCelsius(false)}>°F</button>
             </div>
         </section>
     )

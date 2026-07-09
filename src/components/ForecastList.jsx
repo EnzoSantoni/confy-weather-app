@@ -22,7 +22,6 @@ export default function ForecastList({forecast}) {
         })
         const max = Math.round(Math.max(...entries.map((e) => e.main.temp_max)))
         const min = Math.round(Math.min(...entries.map((e) => e.main.temp_min)))
-        console.log(entries)
         return {day: d, max: max, min: min, icon: weatherIcon.weather[0].icon}
     });
 
@@ -39,10 +38,8 @@ export default function ForecastList({forecast}) {
                     <div><img src={`https://openweathermap.org/img/wn/${d.icon}@2x.png`} alt="" /></div>
                     <div>{d.max}° / {d.min}°</div>
                 </div>
-
                 ))}
             <HourlyList selectedDay={selectedDay} forecast={forecast} />
         </div>
     )
-
 }
