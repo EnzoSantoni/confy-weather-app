@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { useTimestamp } from "../hooks/useTimestamp";
 
 export default function WeatherClauster({data}) {
     const [isCelsius, setIsCelsius] = useState(true)
+    const {minutes} = useTimestamp()
 
     function changeTemp() {
         if(!isCelsius) {
@@ -17,6 +19,7 @@ export default function WeatherClauster({data}) {
                 <div className="weather-info-city">{data.name}</div>
                 <div className="weather-info-icon"><img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="Imagen del clima" /></div>
                 <div className="weather-info-des">{data.weather[0].description}</div>
+                <div className="weather-timer">{`Actualizado hace ${minutes} ${minutes === 1 ? "minuto" : "minutos"}`}</div>
             </div>
             <div className="weather-change">
                 <button className="wheather-b-changes" onClick={() => setIsCelsius(true)}>°C</button>
