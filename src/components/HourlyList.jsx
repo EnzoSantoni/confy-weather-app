@@ -2,7 +2,6 @@ export default function HourlyList({selectedDay, forecast}) {
     if (!selectedDay) return null
 
     const fDay = forecast.list.filter((f) => f.dt_txt.startsWith(selectedDay))
-    console.log(fDay)
 
     return (
         <div className="forecastHoursContainer">

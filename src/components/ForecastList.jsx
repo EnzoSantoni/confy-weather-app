@@ -22,7 +22,7 @@ export default function ForecastList({forecast}) {
         })
         const max = Math.round(Math.max(...entries.map((e) => e.main.temp_max)))
         const min = Math.round(Math.min(...entries.map((e) => e.main.temp_min)))
-        return {day: d, max: max, min: min, icon: weatherIcon.weather[0].icon}
+        return {day: d, max: max, min: min, icon: weatherIcon?.weather[0].icon}
     });
 
 

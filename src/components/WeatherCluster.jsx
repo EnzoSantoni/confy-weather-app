@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useTimestamp } from "../hooks/useTimestamp";
 
-export default function WeatherClauster({data}) {
+export default function WeatherCluster({data}) {
     const [isCelsius, setIsCelsius] = useState(true)
     const {minutes} = useTimestamp()
 
