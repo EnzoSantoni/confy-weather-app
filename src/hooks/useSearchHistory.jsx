@@ -7,13 +7,17 @@ export function useSearchHistory() {
         return saved ? JSON.parse(saved) : [];
     });
 
+    function removeCity(name) {
+    setHistory(history.filter((c) => c !== name))
+}
+
     function addCity(city) {
-        history.includes(city) ? history : setHistory([...history, city]);
+        setHistory([...history.filter((c) => c !== city), city])
     }
 
     useEffect(() => {
         localStorage.setItem("searchHistory", JSON.stringify(history))
     },[history])
 
-    return {addCity, history}
+    return {addCity, history, removeCity}
 } 

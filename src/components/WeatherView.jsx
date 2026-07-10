@@ -1,17 +1,14 @@
 
 import ForecastList from "./ForecastList";
-import WeatherClauster from "./WeatherClauster";
+import WeatherCluster from "./WeatherCluster";
 
-function WeatherView ({data, forecast, loading, error, history, onSearch}) {
+function WeatherView ({data, forecast, loading, error}) {
     if(loading) return <p>Cargando Clima...</p>;
-    if(error) return null;
+    if(error) return <p>Ciudad no encontrada, intente de nuevo.</p>;
     if(!data) return <p>Buscá una ciudad para empezar.</p>;
     return (
         <>
-            {history.map((n) => {
-                return <button className="history-chip" onClick={() => onSearch(n)} key={n}>{n}</button>
-            })}
-            <WeatherClauster data={data} />
+            <WeatherCluster data={data} />
             <ForecastList forecast={forecast} />
         </>
     )

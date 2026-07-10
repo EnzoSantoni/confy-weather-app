@@ -17,8 +17,9 @@ export function useWeather(city) {
 
             try {
                 const APIKEY = import.meta.env.VITE_WEATHER_API_KEY;
-                const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=metric&lang=es`);
-                const resForecast = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIKEY}&units=metric&lang=es`)
+                const prom1 = axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=metric&lang=es`);
+                const promFor = axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIKEY}&units=metric&lang=es`)
+                const [res, resForecast] = await Promise.all([prom1, promFor])
                 setData(res.data)
                 setForecast(resForecast.data)
             }
