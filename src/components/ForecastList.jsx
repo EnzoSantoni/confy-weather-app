@@ -7,12 +7,12 @@ export default function ForecastList({forecast}) {
 
     const tempDays = days.map((d) => {
         const entries = forecast.list.filter((f) => f.dt_txt.startsWith(d))
-        const wheatherCondition = entries.reduce((acc, e) => {
+        const weatherCondition = entries.reduce((acc, e) => {
             const condition = e.weather[0].main;
             acc[condition] = (acc[condition] || 0) + 1;
             return acc
         }, {})
-        const weatherConditionFilter = Object.entries(wheatherCondition).reduce((acc,e) => {
+        const weatherConditionFilter = Object.entries(weatherCondition).reduce((acc,e) => {
             const weather = acc[1] > e[1] ? acc : e;
             return weather
         }, ["", 0])
@@ -27,19 +27,23 @@ export default function ForecastList({forecast}) {
 
 
     return (
-        <div className="forecast-container">
-            {tempDays.map((d) => (
-                <div className="forecast-days" onClick={() => setSelectedDay(d.day)} key={d.day}>
-                    <div>{new Date(d.day + "T12:00:00").toLocaleDateString(navigator.language, {
-                        weekday: 'short',
-                        day: 'numeric',
-                        month: 'short',
-                    })}</div>
-                    <div><img src={`https://openweathermap.org/img/wn/${d.icon}@2x.png`} alt="" /></div>
-                    <div>{d.max}° / {d.min}°</div>
-                </div>
-                ))}
+        <>
             <HourlyList selectedDay={selectedDay} forecast={forecast} />
-        </div>
+            <div className="forecast-days-container">
+                {tempDays.map((d) => (
+                    <button className={selectedDay === d.day ? "forecast-days active" : "forecast-days"} onClick={() => selectedDay !== d.day ? setSelectedDay(d.day) : setSelectedDay("")} key={d.day}>
+                        <div className="d-wday">{new Date(d.day + "T12:00:00").toLocaleDateString(navigator.language, {
+                            weekday: 'short',
+                        })}</div>
+                        <div className="d-day">{new Date(d.day + "T12:00:00").toLocaleDateString(navigator.language, {
+                            day: 'numeric',
+                            month: 'short',
+                        })}</div>
+                        <div className="d-img"><img src={`https://openweathermap.org/img/wn/${d.icon}@2x.png`} alt="" /></div>
+                        <div className="d-temp">{d.max}° <span>/ {d.min}°</span></div>
+                    </button>
+                    ))}
+            </div>
+        </>
     )
 }
