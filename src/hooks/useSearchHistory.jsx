@@ -12,7 +12,7 @@ export function useSearchHistory() {
 }
 
     function addCity(city) {
-        setHistory([...history.filter((c) => c !== city), city])
+        setHistory([...history.filter((c) => c !== city), city].slice(-5))
     }
 
     useEffect(() => {
