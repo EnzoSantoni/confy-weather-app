@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import WeatherView from './components/WeatherView'
 import GameView from './components/GameView'
 import CompareView from './components/CompareView'
-import SearchBar from './components/SearchBar'
+import Sidebar from './components/Sidebar'
 import { useWeather } from './hooks/useWeather'
 import { useSearchHistory } from './hooks/useSearchHistory'
 
@@ -27,16 +27,18 @@ function App() {
 
 
   return (
-    <div className="container">
-      <SearchBar onSearch={onSearch} history={history} removeCity={removeCity}/>
-    <Routes>
-      <Route path="/" element={<WeatherView data={data} forecast={forecast} loading={loading} error={error}/>}></Route>
+    <>
+      <Sidebar />
+      <main className="main-container">
+      <Routes>
+        <Route path="/" element={<WeatherView data={data} forecast={forecast} loading={loading} error={error} onSearch={onSearch} history={history} removeCity={removeCity} />}></Route>
 
-      <Route path="/compare" element={<CompareView />}></Route>
-      
-      <Route path="/game" element={<GameView />}></Route>
-    </Routes>
-    </div>
+        <Route path="/compare" element={<CompareView />}></Route>
+        
+        <Route path="/game" element={<GameView />}></Route>
+      </Routes>
+      </main>
+    </>
   )
 }
 
