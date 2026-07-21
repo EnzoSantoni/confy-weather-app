@@ -1,7 +1,7 @@
 
 function getOutfit(temp, pop) {
     let items = [];
-    let desc = "";
+    let desc;
 
     if(temp < 5) {
         items.push({emoji:"🧣", label:"Bufanda"}, {emoji:"🧤", label:"Guantes"}, {emoji:"🧥", label:"Campera de invierno"}, {emoji:"👖", label:"Pantalón largo"}, {emoji:"👟", label:"Zapatillas"});
