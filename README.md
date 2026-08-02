@@ -8,18 +8,18 @@ A weather app built with React that shows real-time weather data with dynamic vi
 
 ## Screenshots
 
-<img src="screenshots/weather-view.png" alt="Weather view" width="100%"/>
+<img src="screenshot/weather-view.jpg" alt="Weather view" width="100%"/>
 
 <br/>
 
-<img src="screenshots/compare-view.png" alt="Compare view" width="100%"/>
+<img src="screenshot/compare-view.png" alt="Compare view" width="100%"/>
 
 <br/>
 
 <table>
   <tr>
-    <td><img src="screenshots/detail-section.png" alt="Detail section" width="100%"/></td>
-    <td width="35%"><img src="screenshots/mobile-view.png" alt="Mobile view" width="100%"/></td>
+    <td><img src="screenshot/detail-section.png" alt="Detail section" width="100%"/></td>
+    <td width="35%"><img src="screenshot/mobile-view.png" alt="Mobile view" width="100%"/></td>
   </tr>
 </table>
 
