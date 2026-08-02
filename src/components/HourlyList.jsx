@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
+import { iconMap } from "../utils/iconMap";
 
 export default function HourlyList({selectedDay, forecast}) {
 
@@ -16,7 +18,7 @@ export default function HourlyList({selectedDay, forecast}) {
             {fDay.map((d) => {
                 return <div className="forecast-hours" key={d.dt_txt}>
                     <div className="hours-time">{d.dt_txt.split(" ")[1].split(":").slice(0, 2).join(":")}</div>
-                    <img className="hours-img" src={`https://openweathermap.org/img/wn/${d.weather[0].icon}@2x.png`} alt="Imagen del clima" />
+                    <Icon icon={iconMap[d.weather[0].icon]} />
                     <div className="hours-temp">{Math.round(d.main.temp)}°</div>
                 </div>
             })}

@@ -1,9 +1,15 @@
 import { useState } from "react"
 import { useTimestamp } from "../hooks/useTimestamp";
+import { Icon } from "@iconify/react";
+import { iconMap } from "../utils/iconMap";
 
 export default function WeatherCluster({data}) {
     const [isCelsius, setIsCelsius] = useState(true)
     const {minutes} = useTimestamp()
+    const today = new Date()
+    const utcMs = today.getTime() + today.getTimezoneOffset() * 60000;
+    const cityTime = new Date(utcMs + data.timezone * 1000);
+
 
     function changeTemp() {
             const newTemp = Math.round((data.main.temp * 9 / 5) + 32);
@@ -11,17 +17,21 @@ export default function WeatherCluster({data}) {
         
     }
 
-    const today = new Date()
+
+
 
     return (
         <div className="weather-info-container">
             <p>
                 {today.toLocaleDateString(navigator.language, {weekday: 'long',}).toLocaleUpperCase()} · {today.toLocaleDateString(navigator.language, {day: 'numeric', month: 'short'})}
             </p>
-            <h2 className="weather-city">{data.name}</h2>
+            <div className="city-localtime">
+                <h2 className="weather-city">{data.name}</h2>
+                <p className="time-zone">{cityTime.toLocaleTimeString(navigator.language, {hour:"2-digit", minute: "2-digit", hour12: false})}</p>
+            </div>
             <div className="weather-temp-container">
                 <div className="weather-info-icon">
-                    <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="Imagen del clima"/>
+                    <Icon icon={iconMap[data.weather[0].icon]} />
                 </div>
                 <div className="weather-temp" key={isCelsius}>
                     {isCelsius ? <div>{Math.round(data.main.temp)}<span>°C</span></div> : <div >{changeTemp()}<span>°F</span></div>}

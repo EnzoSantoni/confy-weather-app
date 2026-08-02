@@ -1,11 +1,12 @@
 import ForecastList from "./ForecastList";
 import WeatherCluster from "./WeatherCluster";
 import SearchBar from "./SearchBar";
-import DetailSection from "./DetailSection";
-import Footer from "./Footer";
 import { detectSeason } from "../utils/detectSeason";
 
-function WeatherView ({data, forecast, loading, error, onSearch, history, removeCity}) {
+
+
+
+function ComparePanel ({data, forecast, loading, error, onSearch, history, removeCity, side}) {
     const hasSearched = loading || error || data !== null;
     const season = data ? detectSeason(new Date().getMonth(), data.coord.lat) : null;
     const seasonImages = {
@@ -20,14 +21,12 @@ function WeatherView ({data, forecast, loading, error, onSearch, history, remove
         spring: "/seasons/Primavera-noche.jpg",
         summer: "/seasons/Verano-noche.jpg"
     }
-    const bgImage = data?.weather?.[0]?.icon?.endsWith("n") 
-    ? seasonImagesNoche[season] 
-    : seasonImages[season];
+    const bgImage = data?.weather?.[0]?.icon?.endsWith("n") ? seasonImagesNoche[season] : seasonImages[season];
 
 
     return (
         <div className="weather-view-container">
-            <section className="hero" style={season ? {backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url(${bgImage})`} : {}}>
+            <section className={`hero hero-${side}`} style={season ? {backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url(${bgImage})`} : {}}>
                 <div className="hero-scrim"></div>
                 <div className={hasSearched ? "search-stage hidden" : "search-stage"}>
                     <SearchBar onSearch={onSearch} history={history} removeCity={removeCity} />
@@ -45,15 +44,9 @@ function WeatherView ({data, forecast, loading, error, onSearch, history, remove
                     <span>Scrollea para mas detalles ↓</span>
                 </div>
             </section>
-            {data && !loading && <section className="detail">
-                <DetailSection data={data} forecast={forecast} onSearch={onSearch} history={history} />
-            </section>}
-            {data && !loading && <footer className="footer">
-                <Footer />
-            </footer>}
             
         </div>
     )
 }
 
-export default WeatherView
+export default ComparePanel
