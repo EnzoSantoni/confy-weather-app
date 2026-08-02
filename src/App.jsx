@@ -34,8 +34,6 @@ function App() {
         <Route path="/" element={<WeatherView data={data} forecast={forecast} loading={loading} error={error} onSearch={onSearch} history={history} removeCity={removeCity} />}></Route>
 
         <Route path="/compare" element={<CompareView />}></Route>
-        
-        <Route path="/game" element={<GameView />}></Route>
       </Routes>
       </main>
     </>

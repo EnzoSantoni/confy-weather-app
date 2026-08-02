@@ -18,14 +18,6 @@ export default function Sidebar() {
                 </svg>
                 <span>Comparar</span>
             </NavLink>
-            <NavLink to={"/game"} className={({isActive}) => isActive ? "sidebar-item active" : "sidebar-item"}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
-                    <rect x="4" y="4" width="16" height="16" rx="3.5"></rect>
-                    <circle cx="9" cy="9" r="1.2" fill="currentColor" stroke="none"></circle>
-                    <circle cx="15" cy="15" r="1.2" fill="currentColor" stroke="none"></circle>
-                </svg>
-                <span>Juego</span>
-            </NavLink>
         </nav>
     )
 }

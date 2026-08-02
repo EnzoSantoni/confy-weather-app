@@ -17,13 +17,10 @@ export default function WeatherCluster({data}) {
         
     }
 
-
-
-
     return (
         <div className="weather-info-container">
             <p>
-                {today.toLocaleDateString(navigator.language, {weekday: 'long',}).toLocaleUpperCase()} · {today.toLocaleDateString(navigator.language, {day: 'numeric', month: 'short'})}
+                {cityTime.toLocaleDateString(navigator.language, {weekday: 'long',}).toLocaleUpperCase()} · {cityTime.toLocaleDateString(navigator.language, {day: 'numeric', month: 'short'})}
             </p>
             <div className="city-localtime">
                 <h2 className="weather-city">{data.name}</h2>
@@ -41,7 +38,7 @@ export default function WeatherCluster({data}) {
                 {data.weather[0].description.split(" ").map(w => w[0].toUpperCase() + w.slice(1)).join(" ")}
             </p>
             <div className="weather-timer">
-                {`Actualizado hace ${minutes} ${minutes === 1 ? "minuto" : "minutos"}`}
+                {`${minutes === 0 ? "Actualizado ahora" : minutes === 1 ? `Actualizado hace ${minutes}minuto` : `Actualizado hace ${minutes} minutos`}`}
             </div>
             <div className="weather-change">
                 <button className={isCelsius ? "weather-b-changes active" : "weather-b-changes" } onClick={() => setIsCelsius(true)}>°C</button>

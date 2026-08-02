@@ -52,8 +52,17 @@ function RainCanvas({ count, speed, lineLength }) {
             animId = requestAnimationFrame(draw)
         }
 
+        const resizeObserver = new ResizeObserver(() => {
+            canvas.width = canvas.offsetWidth
+            canvas.height = canvas.offsetHeight
+        })
+        resizeObserver.observe(canvas)
+
         animId = requestAnimationFrame(draw)
-        return () => cancelAnimationFrame(animId)
+        return () => {
+            cancelAnimationFrame(animId)
+            resizeObserver.disconnect()
+        }
     }, [count, speed, lenMin, lenMax])
 
     return (

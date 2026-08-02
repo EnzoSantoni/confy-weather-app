@@ -8,11 +8,12 @@ export function useSearchHistory() {
     });
 
     function removeCity(name) {
-    setHistory(history.filter((c) => c !== name))
+    setHistory(prev => prev.filter((c) => c !== name))
 }
 
     function addCity(city) {
-        setHistory([...history.filter((c) => c !== city), city].slice(-5))
+        setHistory(prev => [...prev.filter((c) => c !== city), city].slice(-5))
+
     }
 
     useEffect(() => {

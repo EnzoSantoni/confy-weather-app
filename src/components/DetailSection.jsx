@@ -34,7 +34,7 @@ export default function DetailSection({data, forecast, onSearch, history}) {
             <div className="recent-searches" ref={(el) => elemRef.current[2] = el}>
                 <h3>Busquedas Recientes</h3>
                 <div className="chip-row">
-                    {history.slice(-10).map(c => <button className="chip" key={c} onClick={() => onSearch(c)} >{c}</button>)}
+                    {history.map(c => <button className="chip" key={c} onClick={() => onSearch(c)} >{c}</button>)}
                 </div>
             </div>
         </>

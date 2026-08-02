@@ -40,7 +40,7 @@ export default function StatGrid({data, forecast,}) {
     }, [])
 
     const windDirections = ["N", "NE", "E", "SE", "S", "SO", "O", "NO"]; 
-    const windIndex = Math.round(forecast.list[0].wind.deg / 45) % 8;
+    const windIndex = Math.round(forecast?.list[0]?.wind?.deg / 45) % 8;
 
     return (
         <>
@@ -107,7 +107,7 @@ export default function StatGrid({data, forecast,}) {
                 </div>
             </div>
             <div className="stat-card">
-                <span className="stat-label" >Prob. de presipitacion</span>
+                <span className="stat-label" >Prob. de precipitacion</span>
                 <div className="value" data-value={Math.round(forecast.list[0].pop * 100)}>
                     <span className="count">{Math.round(forecast.list[0].pop * 100)}</span>
                     <span className="stat-unit">%</span>
