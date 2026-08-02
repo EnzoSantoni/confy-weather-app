@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 import DetailSection from "./DetailSection";
 import Footer from "./Footer";
 import { detectSeason } from "../utils/detectSeason";
+import WeatherParticles from "./WeatherParticles";
 
 function WeatherView ({data, forecast, loading, error, onSearch, history, removeCity}) {
     const hasSearched = loading || error || data !== null;
@@ -29,6 +30,7 @@ function WeatherView ({data, forecast, loading, error, onSearch, history, remove
         <div className="weather-view-container">
             <section className="hero" style={season ? {backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url(${bgImage})`} : {}}>
                 <div className="hero-scrim"></div>
+                <WeatherParticles icon={data?.weather?.[0]?.icon} />
                 <div className={hasSearched ? "search-stage hidden" : "search-stage"}>
                     <SearchBar onSearch={onSearch} history={history} removeCity={removeCity} />
                 </div>
