@@ -1,5 +1,7 @@
 import { useState } from "react";
 import HourlyList from "./HourlyList";
+import { Icon } from "@iconify/react";
+import { iconMap } from "../utils/iconMap";
 
 export default function ForecastList({forecast}) {
     const [selectedDay, setSelectedDay] = useState("");
@@ -39,7 +41,7 @@ export default function ForecastList({forecast}) {
                             day: 'numeric',
                             month: 'short',
                         })}</div>
-                        <div className="d-img"><img src={`https://openweathermap.org/img/wn/${d.icon}@2x.png`} alt="" /></div>
+                        <div className="d-img"><Icon icon={iconMap[d.icon]} /></div>
                         <div className="d-temp">{d.max}° <span>/ {d.min}°</span></div>
                     </button>
                     ))}

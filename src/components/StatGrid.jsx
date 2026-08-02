@@ -107,7 +107,7 @@ export default function StatGrid({data, forecast,}) {
                 </div>
             </div>
             <div className="stat-card">
-                <span className="stat-label" >Prob. de lluvia</span>
+                <span className="stat-label" >Prob. de presipitacion</span>
                 <div className="value" data-value={Math.round(forecast.list[0].pop * 100)}>
                     <span className="count">{Math.round(forecast.list[0].pop * 100)}</span>
                     <span className="stat-unit">%</span>
@@ -117,6 +117,13 @@ export default function StatGrid({data, forecast,}) {
                 <span className="stat-label" >Lluvia esperada</span>
                 <div className="value" data-value={forecast.list[0].rain['3h']}>
                     <span className="count">{forecast.list[0].rain['3h']}</span>
+                    <span className="stat-unit">mm</span>
+                </div>
+            </div>}
+            {forecast.list[0].snow && <div className="stat-card">
+                <span className="stat-label" >Nieve esperada</span>
+                <div className="value" data-value={forecast.list[0].snow['3h']}>
+                    <span className="count">{forecast.list[0].snow['3h']}</span>
                     <span className="stat-unit">mm</span>
                 </div>
             </div>}
