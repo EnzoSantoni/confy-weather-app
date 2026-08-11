@@ -46,7 +46,6 @@ A weather app built with React that shows real-time weather data with dynamic vi
 This project pushed me to solve problems I hadn't faced before:
 
 - **Custom hooks** — built `useWeather` (parallel fetching of current weather + forecast), `useSearchHistory` (localStorage with functional state updates to avoid stale closures), and `useTimestamp` (elapsed time since last fetch using `Date.now`)
-- **Canvas rendering** — implemented rain as a custom `requestAnimationFrame` loop drawing diagonal lines on a `<canvas>` element, with a `ResizeObserver` to keep it correctly sized across screen sizes
 - **IntersectionObserver** — used to trigger scroll-based animations and countup number effects only when elements enter the viewport
 - **City local time** — calculated from the UTC offset returned by the API (`timezone` field in seconds), independent of the user's browser timezone
 - **Hemisphere detection** — the season background changes correctly for cities in the southern hemisphere (e.g. July is winter in Buenos Aires, summer in New York)
