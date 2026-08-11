@@ -2,7 +2,7 @@
 
 A weather app built with React that shows real-time weather data with dynamic visuals that adapt to the current conditions and time of day.
 
-**[Live Demo →](https://wheater-enzo.netlify.app)**
+**[Live Demo →](https://confy-weather-app.netlify.app)**
 
 ---
 
